@@ -1,0 +1,76 @@
+{% extends 'base.html' %} 
+{% load static %}
+{% block title %}Collect{% endblock title %}
+
+{% block head %}
+<!--Datatables CSS-->
+<link rel="stylesheet" href="{% static 'datatables/dataTables.bootstrap4.min.css'%}">
+<link rel="stylesheet" href="{% static 'datatables/responsive.bootstrap4.min.css'%}">
+{% endblock head %} 
+
+{% block header_title %}Collect Configuration{% endblock header_title %}
+
+{% block content %}
+<div class="row">
+	<div class="col-12">
+		<button type="button" class="btn btn-primary btn-sm mb-2" data-toggle="modal" data-target="#modal-add-template">New Task</button>
+	</div>
+</div>
+<div class="row">
+	<div class="col-12">
+		<!--Card Header-->
+		<div class="card table table-responsive">
+			<div class="card-header bg-info">
+				<h3 class="card-title">Task Table</h3>
+			</div>
+		<!--Card Body-->
+		<div class="card-body">
+			<table id="tasks-table" class="table table-borderless table-hover">
+			<thead>
+				<tr>
+					<th>Task Name</th>
+					<th>Description</th>
+					<th>Created</th>
+					<th>Status</th>
+					<th>Result</th>
+				</tr>
+			</thead>
+				<tbody>
+					{% for cell in data %}
+					<tr>
+						<td>{{cell.task_name}}</td>
+						<td>{{cell.description}}</td>
+						<td>{{cell.created}}</td>
+						<td>{{cell.status}}</td>
+            <td>{{cell.result}}</td>
+					</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+		</div>
+	</div>
+</div>
+{% endblock content%}
+
+{% block script %}
+<!--DataTables JS-->
+<script src="{% static 'datatables/jquery.dataTables.min.js'%}"></script>
+<script src="{% static 'datatables/dataTables.bootstrap4.min.js'%}"></script>
+<script src="{% static 'datatables/dataTables.responsive.min.js'%}"></script>
+<script src="{% static 'datatables/responsive.bootstrap4.min.js'%}"></script>
+<script>
+	$(document).ready(function() {
+    $('#tasks-table').DataTable( {
+        "ajax": 'tasks/get',
+        "columns": [
+            { "data": "task_name" },
+            { "data": "description" },
+            { "data": "created" },
+            { "data": "status" },
+            { "data": "result" },
+        ]
+    } );
+} );
+</script>
+{% endblock script%}

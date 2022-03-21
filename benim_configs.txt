@@ -1,0 +1,93 @@
+< div class = "row" >
+    <
+    div class = "col-12" >
+    <
+    button type = "button"
+class = "btn btn-primary btn-sm mb-2"
+data - toggle = "modal"
+data - target = "#modal-add-template" > Add Template < /button> <
+    /div> <
+    /div>
+
+<
+tbody > { % for cell in data % } <
+    tr >
+    <
+    td > {
+        { cell.template_name } } < /td> <
+    td > {
+        { cell.description } } < /td> <
+    td > {
+        { cell.created } } < /td> <
+    td > {
+        { cell.updated } } < /td> <
+    td class = "text-center" >
+    <
+    div class = "btn-group" >
+    <
+    button type = "button"
+id = "btn-update"
+class = "btn btn-warning ml-1"
+title = "View or Update Template" >
+    <
+    i class = "fas fa-edit" > < /i> <
+    /button> <
+    button type = "button"
+id = "btn-delete"
+class = "btn btn-danger ml-1"
+title = "Delete Template" >
+    <
+    i class = "fas fa-trash" > < /i> <
+    /button> <
+    /div> <
+    /td> <
+    /tr> { % endfor % } <
+    /tbody>
+
+
+
+var table = $('#template-table').DataTable();
+$('#template-table tbody').on('click', 'button', function() {
+    var temp_name = table.row($(this).parents('tr')).data()[0];
+    var btnId = $(this).attr('id');
+    window.onload = function() {
+        refreshDT();
+    };
+    // Ajax Calls based on the button id
+    if (btnId == "btn-update") {
+        $.ajax({
+            url: "template/get/" + temp_name,
+            type: "GET",
+            // request is ok 
+            success: function(response) {
+                $('.modal-content .modal-header .fake-title-class').html(response.template_name);
+                $('.modal-content .modal-body .fake-form-class').attr("action", "template/update/" + temp_name);
+                $('.modal-content .modal-body .fake-description-class').attr("value", response.description);
+                $('.modal-content .modal-body .fake-content-class').html(response.template_content);
+                $('#modal-update-template').modal('show');
+            },
+            // Error handling 
+            error: function(error) {
+                alert(`Error ${error}`);
+            }
+        });
+
+    } else {
+        var result = confirm("Do you confirm to delete " + temp_name + "?")
+        if (result) {
+            $.ajax({
+                url: "template/delete/" + temp_name,
+                type: "POST",
+                data: { csrfmiddlewaretoken: '{{ csrf_token }}' },
+                // request is ok 
+                success: function(data) {
+                    refreshDT();
+                },
+                // Error handling 
+                error: function(error) {
+                    alert(`Error ${error}`);
+                }
+            });
+        }
+    }
+});
