@@ -3,18 +3,18 @@
 {% block title %}Templates{% endblock title %}
 
 {% block head %}
-	<!--Datatables CSS-->
-	<link rel="stylesheet" href="{% static 'datatables/dataTables.bootstrap4.min.css'%}">
-	<link rel="stylesheet" href="{% static 'datatables/responsive.bootstrap4.min.css'%}">
-	<link rel="stylesheet" href="{% static 'datatables/select.bootstrap4.min.css'%}">
-	<link rel="stylesheet" href="{% static 'datatables/buttons.bootstrap4.min.css'%}">
-	<!--CodeMirror CSS
+<!--Datatables CSS-->
+<link rel="stylesheet" href="{% static 'datatables/dataTables.bootstrap4.min.css'%}">
+<link rel="stylesheet" href="{% static 'datatables/responsive.bootstrap4.min.css'%}">
+<link rel="stylesheet" href="{% static 'datatables/select.bootstrap4.min.css'%}">
+<link rel="stylesheet" href="{% static 'datatables/buttons.bootstrap4.min.css'%}">
+<!--CodeMirror CSS
 	<link rel="stylesheet" href="{% static 'codemirror/codemirror.css'%}">
 	<link rel="stylesheet" href="{% static 'codemirror/theme/monokai.css'%}">
 	<link rel="stylesheet" href="{% static 'codemirror/addon/scroll/simplescrollbars.css'%}">
 	-->
 
-{% endblock head %} 
+{% endblock head %}
 
 {% block header_title %}Templates{% endblock header_title %}
 
@@ -23,30 +23,30 @@
 	<div class="col-12">
 		<!--Card Header-->
 		<div class="card table table-responsive">
-			<div class="card-header bg-info">
+			<div class="card-header bg-gray">
 				<h3 class="card-title">Template Table</h3>
 			</div>
-		<!--Card Body-->
-		<div class="card-body">
-			<table id="template-table" class="table table-bordered table-hover">
-			<thead>
-				<tr>
-					<th>Template Name</th>
-					<th>Description</th>
-					<th>Created</th>
-					<th>Modified</th>
-				</tr>
-			</thead>
-			<tfoot>
-				<tr>
-					<th>Template Name</th>
-					<th>Description</th>
-					<th>Created</th>
-					<th>Modified</th>
-				</tr>
-		</tfoot>
-			</table>
-		</div>
+			<!--Card Body-->
+			<div class="card-body">
+				<table id="template-table" class="table table-bordered table-hover">
+					<thead>
+						<tr>
+							<th>Template Name</th>
+							<th>Description</th>
+							<th>Created</th>
+							<th>Modified</th>
+						</tr>
+					</thead>
+					<tfoot>
+						<tr>
+							<th>Template Name</th>
+							<th>Description</th>
+							<th>Created</th>
+							<th>Modified</th>
+						</tr>
+					</tfoot>
+				</table>
+			</div>
 		</div>
 	</div>
 </div>

@@ -3,7 +3,8 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
   <!-- Brand Logo -->
   <a href="index3.html" class="brand-link">
-    <img src="{% static 'images/logo.png' %}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+    <img src="{% static 'images/logo.png' %}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+      style="opacity: .8">
     <h3 class="brand-text font-weight-light">WEBNET</h3>
   </a>
 
@@ -11,18 +12,28 @@
   <div class="sidebar">
     <!-- Sidebar Menu -->
     <nav class="mt-2">
-      <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+      <ul class="nav nav-pills nav-sidebar flex-column nav-child-indent" data-widget="treeview" role="menu"
+        data-accordion="false">
         <!-- Add icons to the links using the .nav-icon class
              with font-awesome or any other icon font library -->
         <li class="nav-item">
           <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-chart-line"></i>
+            <i class="nav-icon fas fa-desktop"></i>
             <p>
               Dashboard
             </p>
           </a>
         </li>
-        <li class="nav-item menu-open">
+        <li class="nav-item">
+          <a href="{% url 'inventory:inventory' %}"
+            class="nav-link {% if 'inventory' in active_page %} active {% endif %}">
+            <i class="nav-icon fas fa-server"></i>
+            <p>
+              Inventory
+            </p>
+          </a>
+        </li>
+        <li class="nav-item  {% if 'change-management' in active_page %} menu-open {% endif %} ">
           <a href="#" class="nav-link {% if 'change-management' in active_page %} active {% endif %}">
             <i class="nav-icon fab fa-hive"></i>
             <p>
@@ -34,21 +45,16 @@
             <li class="nav-item">
               <a href="{% url 'cmtemplate:templates' %}"
                 class="nav-link {% if 'templates' in active_page %} active {% endif %}">
-                <i class="fas fa-file-alt nav-icon"></i>
                 <p>Templates</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="#"
-                class="nav-link {% if 'collect' in active_page %} active {% endif %}">
-                <i class="fas fa-archive nav-icon"></i>
+              <a href="#" class="nav-link {% if 'collect' in active_page %} active {% endif %}">
                 <p>Collect</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="#"
-                class="nav-link {% if 'provision' in active_page %} active {% endif %}">
-                <i class="fas fa-share-alt nav-icon"></i>
+              <a href="#" class="nav-link {% if 'provision' in active_page %} active {% endif %}">
                 <p>Deploy</p>
               </a>
             </li>

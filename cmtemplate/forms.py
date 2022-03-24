@@ -6,5 +6,5 @@ class TemplateCreateForm(forms.Form):
     content = forms.CharField(widget=forms.Textarea, required=False, label="Template Content")
 
 class TemplateUpdateForm(forms.Form):
-    description = forms.CharField(widget=forms.TextInput(attrs={"class":"fake-description-class"}), label="Description", max_length=128, required=False)
-    content = forms.CharField(widget=forms.Textarea(attrs={"class":"fake-content-class"}), required=False)
+    description = forms.CharField(widget=forms.TextInput(attrs={"class":"fake-template-update-descr"}), label="Description", max_length=128, required=False)
+    content = forms.CharField(widget=forms.Textarea(attrs={"class":"fake-template-update-content"}), required=False)

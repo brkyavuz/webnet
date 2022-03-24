@@ -3,19 +3,21 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>WebNet | {% block title%} {% endblock title %}</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>WebNet | {% block title%} {% endblock title %}</title>
 
-    <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="{% static 'fontawesome/all.min.css' %}">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="{% static 'css/adminlte.min.css' %}">
-    <link rel="stylesheet" href="{% static 'css/docs.css' %}">
-    {% block head %} 
-    {% endblock head %}
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="{% static 'fontawesome/all.min.css' %}">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="{% static 'css/adminlte.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/docs.css' %}">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  {% block head %}
+  {% endblock head %}
 
 </head>
 
@@ -28,54 +30,54 @@
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
-        <!-- Content Header (Page header) -->
-        <div class="content-header">
-          <div class="container-fluid">
-            <div class="row mb-2">
-              <div class="col-sm-6">
-                <h1 class="m-0">{% block header_title %}{% endblock header_title %}</h1>
-              </div>
-              <!-- /.col -->
-              <div class="col-sm-6">
-                <ol class="breadcrumb float-sm-right">
-                  <li class="breadcrumb-item"><a href="#">Home</a></li>
-                  <li class="breadcrumb-item active">{{active_page}}</li>
-                </ol>
-              </div>
-              <!-- /.col -->
+      <!-- Content Header (Page header) -->
+      <!-- Content Header (Page header) -->
+      <div class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1 class="m-0">{% block header_title %}{% endblock header_title %}</h1>
             </div>
-            <!-- /.row -->
+            <!-- /.col -->
+            <div class="col-sm-6">
+              <ol class="breadcrumb float-sm-right">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item active">{{active_page}}</li>
+              </ol>
+            </div>
+            <!-- /.col -->
           </div>
-          <!-- /.container-fluid -->
+          <!-- /.row -->
         </div>
-        <!-- /.content-header -->
+        <!-- /.container-fluid -->
+      </div>
+      <!-- /.content-header -->
 
-        <!-- Main content -->
-        <div class="content">
-          <div class="container-fluid">
-            {% block content %} {% endblock content %}
-          </div>
-          <!-- /.container-fluid -->
+      <!-- Main content -->
+      <div class="content">
+        <div class="container-fluid">
+          {% block content %} {% endblock content %}
         </div>
-        <!-- /.content -->
+        <!-- /.container-fluid -->
+      </div>
+      <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
     <!-- Main Footer -->
     {% include 'partials/_footer.html' %}
-    </div>
-      <!-- ./wrapper -->
+  </div>
+  <!-- ./wrapper -->
 
-    <!-- REQUIRED SCRIPTS -->
-    <!-- jQuery -->
-    <script src="{% static 'js/jquery.min.js' %}"></script>
-    <!-- Bootstrap 4 -->
-    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
-    <!-- AdminLTE App -->
-    <script src="{% static 'js/adminlte.min.js' %}"></script>
-    <!-- Custom Codes -->
-    <script src="{% static 'js/main.js' %}"></script>
-    {% block script %} {% endblock script %}
+  <!-- REQUIRED SCRIPTS -->
+  <!-- jQuery -->
+  <script src="{% static 'js/jquery.min.js' %}"></script>
+  <!-- Bootstrap 4 -->
+  <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+  <!-- AdminLTE App -->
+  <script src="{% static 'js/adminlte.min.js' %}"></script>
+  <!-- Custom Codes -->
+  <script src="{% static 'js/main.js' %}"></script>
+  {% block script %} {% endblock script %}
 </body>
 
 </html>

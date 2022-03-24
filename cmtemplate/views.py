@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from django.http import JsonResponse
+from django.http import JsonResponse,HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from .models import Template
 from .forms import TemplateCreateForm, TemplateUpdateForm
@@ -26,18 +26,18 @@ def update(request,name):
     form = TemplateUpdateForm(request.POST)
     if form.is_valid():
         cd = form.cleaned_data
+        print(cd)
         temp = Template.objects.get(template_name=name)
         temp.description = cd["description"]
         temp.template_content = cd["content"]
         temp.save()
-    return redirect('cmtemplate:templates')
+        return redirect('cmtemplate:templates')
 
 @csrf_exempt
 def delete(request, name):
     temp = Template.objects.get(template_name=name)
     temp.delete()
-
-    return redirect('cmtemplate:templates')
+    return HttpResponse(status=200)
 
 def getall(request):
     qs = Template.objects.values('template_name', 'description', 'created', 'updated')
